@@ -117,9 +117,10 @@ var ninetiesKid = function(movies) {
 var movieNight = function(movies, timeLimit) {
 
   return _.reduce(movies, function(total, movie) {
-    if (movie.runtime < timeLimit) {
-      console.log(true)
+    if (movie.runtime < timeLimit || timeLimit > 60) {
       return true;
+    } else {
+      return false;
     }
   }, 0);
 
