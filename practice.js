@@ -64,7 +64,11 @@ var startsWith = function(fruits, letter) {
 
 // return a filtered array containing only cookie-type desserts.
 var cookiesOnly = function(desserts) {
-
+  return _.filter(desserts, function(dessert) {
+    if (dessert.type === 'cookie') {
+      return dessert;
+    }
+  });
 };
 
 /*
@@ -75,26 +79,49 @@ var cookiesOnly = function(desserts) {
 
 // return the total price of all products.
 var sumTotal = function(products) {
-
+  return _.reduce(products, function(total, product) {
+    //console.log(product.price.slice(0, 1))
+    //console.log(Number(product.price.slice(1)))
+    return total + Number(product.price.slice(1));
+  }, 0);
 };
 
 // return an object consisting of dessert types and how many of each.
 // exampleOutput: { dessertType: 3, dessertType2: 1 }
 var dessertCategories = function(desserts) {
 
+  return _.reduce(desserts, function(list, dessert) {
+    list[dessert.type] = (list[dessert.type] || 0) + 1;
+    return list;
+  }, {});
 };
 
 // given an array of movie data objects,return an array containing
 // movies that came out between 1990 and 2000.
 // TIP: use an array as your accumulator - don't push to an external array!
 var ninetiesKid = function(movies) {
+  var result = [];
 
+  _.reduce(movies, function(total, movie) {
+    if (movie.releaseYear >= 1990 && movie.releaseYear <= 2000) {
+      result.push(movie.title);
+    }
+  }, 0);
+
+  return result;
 };
 
 // return an boolean stating if there exists a movie with a shorter
 // runtime than your time limit.
 // timeLimit is an integer representing a number of minutes.
 var movieNight = function(movies, timeLimit) {
+
+  return _.reduce(movies, function(total, movie) {
+    if (movie.runtime < timeLimit) {
+      console.log(true)
+      return true;
+    }
+  }, 0);
 
 };
 
