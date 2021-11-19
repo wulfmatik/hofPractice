@@ -135,6 +135,9 @@ var movieNight = function(movies, timeLimit) {
 // given an array of strings, use _.map to return a new array containing all
 // strings converted to uppercase letters.
 var upperCaseFruits = function(fruits) {
+  return _.map(fruits, function(fruit) {
+    return fruit.toUpperCase();
+  });
 
 };
 
@@ -142,8 +145,18 @@ var upperCaseFruits = function(fruits) {
 // that have a new "glutenFree" property, with a boolean value.
 // TIP: Items that contain flour are not gluten-free.
 var glutenFree = function(desserts) {
-
+  return _.map(desserts, function(dessert) {
+    var obj = dessert;
+    if (dessert.ingredients[0] === 'flour') {
+      dessert.glutenFree = false;
+    } else {
+      dessert.glutenFree = true;
+    }
+    return obj;
+  });
 };
+
+
 
 // use _.map to return an array of items with their sale prices, with a new property
 // containing the sale price. round any decimals to 2 places.
