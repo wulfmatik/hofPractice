@@ -141,6 +141,7 @@ var upperCaseFruits = function(fruits) {
 
 };
 
+
 // given an array of dessert objects, return a new array of objects
 // that have a new "glutenFree" property, with a boolean value.
 // TIP: Items that contain flour are not gluten-free.
